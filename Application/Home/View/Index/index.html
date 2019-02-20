@@ -1,0 +1,53 @@
+<include file="Public/header" />
+<div class="line46"></div>
+<article>
+  <div class="pics">
+    <ul>
+      <li><i><a href="javascript:void()"><img src="__PUBLICHOME__/images/t01.jpg"></a></i><span></span></li>
+      <li><i><a href="javascript:void()"><img src="__PUBLICHOME__/images/t04.jpg"></a></i><span></span></li>
+      <li><i><a href="javascript:void()"><img src="__PUBLICHOME__/images/t03.jpg"></a></i><span></span></li>
+    </ul>
+  </div> 
+  <div class="blank"></div>
+  <div class="leftbox">
+    <div class="tuijian">
+      <h2 class="hometitle"><span>
+        <volist name="navigations" id="vo">
+             <a href="__MODULE__/cate/lists/id/{$vo.id}">{$vo.catename}</a>
+        </volist>
+      </span>特别推荐</h2>
+      <ul>
+        
+       <volist name="articlesdj" id="vo">
+
+        <li>
+          <div class="tpic"><img src="__ROOT__{$vo.pic}"></div>
+          <b>{$vo.title}</b><span>{$vo.desc}</span><a href="__MODULE__/Article/info/id/{$vo.id}" class="readmore">阅读原文</a></li>
+        </volist>
+
+      </ul>
+    </div>
+    <div class="newblogs">
+      <h2 class="hometitle">最新文章</h2>
+      <ul id="list">
+        <volist name="articleszx" id="vo">
+        <li>
+          <h3 class="blogtitle"><a href="__MODULE__/Article/infos/id/{$vo.id}" target="_blank" >{$vo.title}</a></h3>
+          <div class="bloginfo"><span class="blogpic"><a href="__MODULE__/Article/infos/id/{$vo.id}" title=""><img src="__ROOT__/{$vo.pic}"  /></a></span>
+            <p>{$vo.desc}</p>
+          </div>
+          <div class="autor"><span class="lm f_l"><a href="/">叶贵丰个人博客</a></span><span class="dtime f_l"></span><span class="viewnum f_l">浏览（<a href="/"><if condition="$vo.sum eq ''">0</if> {$vo.sum}</a>）</span>时间:&nbsp{$vo.time||date="Y-m-d H:i:s",###}<span class="f_r"><a href="__MODULE__/Article/infos/id/{$vo.id}" class="more">阅读原文</a></span></div>
+        </li>
+      </volist>
+       
+      </ul>
+      <ul id="list2">
+      </ul>
+    </div>
+  </div>
+  
+<include file="Public/right" />
+</article>
+<include file="Public/footer" />
+</body>
+</html>

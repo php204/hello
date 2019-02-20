@@ -1,0 +1,86 @@
+﻿<!--_meta 作为公共模版分离出去-->
+<include file="Public/_meta"/>
+<!--/meta 作为公共模版分离出去-->
+
+<title>资讯列表 - 资讯管理 - H-ui.admin v3.0</title>
+<meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<!--_header 作为公共模版分离出去-->
+<include file="Public/_header"/>
+<!--/_header 作为公共模版分离出去-->
+
+<!--_menu 作为公共模版分离出去-->
+<include file="Public/_menu"/>
+<!--/_menu 作为公共模版分离出去-->
+
+<section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+		<span class="c-gray en">&gt;</span>
+	    链接管理
+		<span class="c-gray en">&gt;</span>
+		链接列表
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+	</nav>
+	<div class="Hui-article">
+		<form action="__CONTROLLER__/link_sort" method="post">
+		<article class="cl pd-20">
+			<div class="cl pd-5 bg-1 bk-gray mt-20">
+				<span class="l">
+				<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+				<a class="btn btn-primary radius" href="__CONTROLLER__/link_add">添加链接</a>
+				<input class="btn btn-primary radius" type="submit" value="更新排序">
+				</span>
+				<span class="r">共有数据：<strong>7</strong> 条</span>
+			</div>
+			<div class="mt-20">
+				<table class="table table-border table-bordered table-bg table-hover table-sort">
+					<thead>
+						<tr class="text-c">
+							<th width="5"><input type="checkbox" name="" value=""></th>
+							<th width="4%">排序</th>
+							<th width="4%">ID</th>
+							<th width="400">链接名称：</th>
+							<th width="400">链接地址：</th>
+							<th width="400">链接描述：</th>
+						    <th>时间</th>
+							<th width="120">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <volist name="list" id="vo">
+						<tr class="text-c">
+							<td><input type="checkbox" value="" name=""></td>
+							<td><input type="text" value="{$vo.sort}" name="{$vo.id}" style="width:15px;"></td>
+							<td>{$vo.id}</td>
+							<td>{$vo.title}</td>
+							<td>{$vo.url}</td>
+							<td><?php echo(html_entity_decode($vo['desc'])); ?></td>
+							<td></td>
+							<td class="f-14 td-manage">
+								<a onClick="return confirm('确定要删除栏目吗')" href="__CONTROLLER__/link_del/id/{$vo.id}">删除</a>
+								<a onClick="return confirm('确定要修改栏目吗')" href="__CONTROLLER__/link_edit/id/{$vo.id}">修改</a>
+							</td>
+						</tr>
+					    </volist>
+					</tbody>
+
+				</table>
+				<div class="list-pages" style="text-align: center;">{$page}</div>
+			</div>
+		</article>
+		</form>
+	</div>
+</section>
+
+<!--_footer 作为公共模版分离出去-->
+<include file="Public/_footer"/>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/laypage/1.2/laypage.js"></script>
+</body>
+</html>

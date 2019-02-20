@@ -1,0 +1,47 @@
+<div class="rightbox">
+    <div class="aboutme">
+      <h2 class="ab_title">关于我</h2>
+      <div class="avatar"><img src="__PICS__"></div>
+      <div class="ab_con">
+        <p>网名：无法输入!!!</p>
+        <p>职业：php工程师 </p>
+        <p>籍贯：地球</p>
+        <p>邮箱：a823025114@163.com</p>
+      </div>
+    </div>
+    <div class="blank"></div>
+    <div class="search">
+      <form action="__MODULE__/Cate/list" method="get" >
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="paihang">
+      <h2 class="ab_title"><a href="/">点击排行</a></h2>
+      <ul>
+        <!-- 遍历点击排行的数据 -->
+         <volist name="articlesph" id="vo">
+              <li><b><a href="__MODULE__/Article/infos/id/{$vo.id}" target="_blank">{$vo.title}</a></b>
+                <p><i><img src="__ROOT__{$vo.pic}"></i>{$vo.desc}...</p>
+              </li>
+         </volist>
+         <!-- end -->
+      </ul>
+    </div>
+    <div class="links">
+      <h2 class="ab_title">友情链接</h2>
+      <ul>
+
+          <volist name="linkes" id="vo">
+             <li><a href="{$vo.url}" target="_blank">{$vo.title}</a></li>
+          </volist>
+
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="ab_title">微信关注</h2>
+      <ul>
+        <img src="http://127.0.0.1/tp/Application/Home/Public/images/wx.jpg">
+      </ul>
+    </div>
+  </div>

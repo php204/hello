@@ -1,0 +1,35 @@
+<include file="Public/header" />
+<div class="line46"></div>
+<article>
+  <div class="leftbox">
+    <div class="newblogs">
+      <h2 class="hometitle">
+        <span>
+
+           <foreach name="catename" item="vo" >
+        
+                <a href="__MODULE__/cate/list/id/{$vo.id}">{$vo.catename}</a>
+
+           </foreach>
+
+         </span>
+      </h2>
+      <ul>
+        <volist name="list" id="vo">
+            <li>
+              <h3 class="blogtitle"><a href="__MODULE__/article/info/id/{$vo.id}" target="_blank" >{$vo.title}</a></h3>
+              <div class="bloginfo"><span class="blogpic"><a href="__MODULE__/Article/info/id/{$vo.id}" title=""><img src="__ROOT__/{$vo.pic}"  /></a></span>
+                <p>{$vo.desc}</p>
+              </div>
+              <div class="autor"><span class="lm f_l"><a href="/">叶贵丰个人博客</a></span><span class="dtime f_l">{$vo.time|date="Y-m-d",###}</span><span class="viewnum f_l">浏览<a href="/">{$vo.sum}</a>次</span><span class="pingl f_l">评论（<a href="/">37</a>）</span><span class="f_r"><a href="__MODULE__/article/info/id/{$vo.id}" class="more">阅读原文>></a></span></div>
+            </li>
+        </volist>
+      </ul>
+      <div class="pagelist">{$page}</div>
+    </div>
+  </div>
+      <include file="Public/right" />
+</article>
+      <include file="Public/footer" />
+</body>
+</html>

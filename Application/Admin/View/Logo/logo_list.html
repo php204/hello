@@ -1,0 +1,134 @@
+﻿<!--_meta 作为公共模版分离出去-->
+<include file="Public/_meta"/>
+<!--/meta 作为公共模版分离出去-->
+
+<title>资讯列表 - 资讯管理 - H-ui.admin v3.0</title>
+<meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<script type="text/javascript">
+                  
+                         
+                      function delAll(){
+                           //添加提示 confirm
+                          if(confirm("确定要删除数据吗")){
+								var idstr="";
+								$(".del").each(function(i,x){
+									if(x.checked){
+										idstr=idstr+x.value+",";
+									}
+								})
+							  
+							 $.get("{:U('Article/article_del_all')}",{"ids":idstr},function(d){
+							     if (d) {
+                                    alert('删除成功');
+								    location.href="{:U('Article/article_list')}";
+							     }
+
+							});
+
+                           }
+
+						}	
+                    
+
+			      /*全选按钮设置*/
+			      function datadel2(){
+			      	
+			      	    $('input[class=del]').attr('checked',true);
+
+			      }   
+			       
+			       /*反选按钮*/
+			      function datadel3(){
+
+			             var del3=$('tr input:checked');
+			             $('input[class=del]').attr('checked',true);
+			             del3.attr('checked',false);
+			             
+			      }
+
+</script>
+</head>
+<body>
+<!--_header 作为公共模版分离出去-->
+<include file="Public/_header"/>
+<!--/_header 作为公共模版分离出去-->
+
+<!--_menu 作为公共模版分离出去-->
+<include file="Public/_menu"/>
+<!--/_menu 作为公共模版分离出去-->
+
+<section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+		<span class="c-gray en">&gt;</span>
+		文章管理
+		<span class="c-gray en">&gt;</span>
+		文章列表
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+	</nav>
+	<div class="Hui-article">
+		<form  method="post">
+		<article class="cl pd-20">
+			<div class="cl pd-5 bg-1 bk-gray mt-20">
+				<span class="l">
+				<a href="javascript:vol()" onclick="delAll()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+				<a href="javascript:;" onclick="datadel2()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6e2;</i> 全选</a>
+				<a href="javascript:;" onclick="datadel3()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6e2;</i> 反选</a>
+				<a class="btn btn-primary radius" href="__CONTROLLER__/article_add">添加文章</a>
+				</span>
+				<span class="r">共有数据：<strong>54</strong> 条</span>
+			</div>
+			<div class="mt-20">
+				<table class="table table-border table-bordered table-bg table-hover table-sort">
+					<thead>
+						<tr class="text-c">
+							<th width="5"><input type="checkbox" name="" value=""></th>
+							<th width="4%">ID</th>
+							<th width="15%">文章标题</th>
+						    <th width="15%">缩略图</th>
+						    <th width="200px">所属栏目</th>
+						    <th width="100px">创建时间</th>
+							<th width="120">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <volist name="articles" id="vo">
+							<tr class="text-c">
+								<td><input type="checkbox" value="{$vo.id}" name="id" class="del"></td>
+								<td>{$vo.id}</td>
+								<td title="{$vo.title}"><a target="_blank" href="#" title="{$vo.titles}">{$vo.title}</a></td>
+								<td>
+                                <if condition="$vo['pic'] neq ''">
+                                	<img src="__ROOT__{$vo.pic}" height="40" width="70">
+                                <else />
+                                    暂无缩略图
+                                </if>
+								</td>
+								<td>{$vo.catename}</td>
+								<td><?php echo date('Y-m-d H:i:s',$vo['time']); ?></td>
+								<td class="f-14 td-manage">
+								<a onClick="return confirm('确定要删除栏目吗')" href="__CONTROLLER__/article_del/id/{$vo.id}">删除</a>
+								<a onClick="return confirm('确定要修改栏目吗')" href="__CONTROLLER__/article_edit/id/{$vo.id}">修改</a>
+							</td>
+							</tr>
+					    </volist>
+					</tbody>
+				</table>
+
+			           <div class="list-pages" style="text-align: center;">{$page}</div>
+			</div>
+		</article>
+		</form>
+	</div>
+</section>
+<!-- 删除功能 -->
+<!--_footer 作为公共模版分离出去-->
+<include file="Public/_footer"/>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/laypage/1.2/laypage.js"></script>
+</body>
+</html>

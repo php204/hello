@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页_叶贵丰个人博客</title>
+<meta name="keywords" content="个人博客,叶贵丰个人博客,叶贵丰" />
+<meta name="description" content="叶贵丰个人博客" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="__PUBLICHOME__/css/base.css" rel="stylesheet">
+<link href="__PUBLICHOME__/css/index.css" rel="stylesheet">
+<link href="__PUBLICHOME__/css/m.css" rel="stylesheet">
+<link rel="stylesheet" href="__PUBLICHOME__/layui/css/layui.css">
+<script type="text/javascript" src="__PUBLICHOME__/layui/layui.all.js"></script>
+<script type="text/javascript" src="__PUBLICHOME__/js/ajax3.0-min.js"></script>
+<script type="text/javascript" src="__PUBLICHOME__/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="__PUBLICHOME__/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="__PUBLICHOME__/js/jquery.min.js"></script>
+
+</head>
+<body>
+<header>
+  <div id="mnav">
+    <div class="logo"><a href="/">叶贵丰个人博客</a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <ul id="starlist">
+        <li><a href="__MODULE__/Index/index">网站首页</a></li>
+        
+      <!-- 数据调用 -->
+      <volist name="navigations" id="vo">
+        <li><a href="__MODULE__/cate/lists/id/{$vo.id}">{$vo.catename}</a></li>
+      </volist>
+
+    </ul>
+  </div>
+  <script>
+window.onload = function ()
+{
+  var oH2 = document.getElementById("mnavh"); 
+  var oUl = document.getElementById("starlist");  
+  oH2.onclick = function ()
+  {
+    var style = oUl.style;
+    style.display = style.display == "block" ? "none" : "block";
+    oH2.className = style.display == "block" ? "open" : ""
+  }
+}
+</script> 
+<script type="text/javascript"></script>
+</header>
